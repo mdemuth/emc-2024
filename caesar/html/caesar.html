@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cäsa-Chiffre</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <script src="caesar.js"></script>
+
+  <div id="content">
+    <h1>Cäsar-Chiffre</h1>
+    <label for="input">Eingabe</label>
+    <textarea id="input" name="input" rows="10" cols="80" onkeyup="rotate();">HALLO LIEBE LERNER DES RAIFFEISEN-CAMPUS!
+HEUTE ZEIGE ICH EUCH WIE DIE CAESAR CHIFFRE FUNKTIONIERT.</textarea>
+    <label for="rot">Rotation</label>
+    <input id="rot" type="number" step="1" value="3" onchange="rotate();"></input>
+    <img id="op" src="encrypt.png"7>
+    <label for="output">Ausgabe</label>
+    <textarea disabled="true" id="output" name="output" rows="10" cols="80"></textarea>
+  </div>
+  <script>
+    let input = document.getElementById("input");
+    let rot = document.getElementById("rot");
+    let op = document.getElementById("op");
+    let output = document.getElementById("output");
+
+    function rotate() {
+      let r =  Math.floor(rot.value);
+      op.src = (r >= 0)?"encrypt.png":"decrypt.png";
+      output.value = rotateStr(input.value, r);
+    }
+
+    rotate();
+
+  </script>
+</body>
+
+</html>
